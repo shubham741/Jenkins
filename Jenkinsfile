@@ -1,5 +1,6 @@
 node {
    def mvnHome
+   def app
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/shubham741/Jenkins.git'
@@ -20,4 +21,10 @@ node {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
+   stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
+
+        app = docker.build("getintodevops/hellonode")
+    }
 }
