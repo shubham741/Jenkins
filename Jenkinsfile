@@ -24,6 +24,6 @@ node {
       archive 'target/*.jar'
    }
    stage('Docker image build') {
-      docker build -f DockerFile -t demo .
+      sh 'docker build -f DockerFile -t demo .'
    }
 }
