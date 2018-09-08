@@ -32,6 +32,6 @@ node {
    }
    
    stage('Docker image deploy'){
-      sh 'docker run 36ee344df54f'
+      sh 'docker run -p 8090:8090 36ee344df54f'
    }
 }
