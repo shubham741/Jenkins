@@ -2,6 +2,7 @@ node {
    def mvnHome
    def app
    def docker
+   def dockerImage
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
       git 'https://github.com/shubham741/Jenkins.git'
@@ -25,6 +26,12 @@ node {
    }
    
    stage('Docker image build'){
-      sh 'docker build -f Dockerfile -t shsingh/demo .'
+      //sh 'docker build -f Dockerfile -t shsingh/demo .'
+      dockerImage = $(docker build -f Dockerfile -t shsingh/demo . | awk '/Successfully built/{print $NF}')
+      //IMAGE_ID=$(docker build -q -t foo . 2>/dev/null | awk '/Successfully built/{print $NF}')
+   }
+   
+   stage('Docker image deploy'){
+      sh 'docker run {$dockerImage}'
    }
 }
