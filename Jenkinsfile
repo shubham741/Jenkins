@@ -27,11 +27,11 @@ node {
    
    stage('Docker image build'){
       sh 'docker build -f Dockerfile -t shsingh/demo .'
-      dockerImage = docker images | awk '/Successfully built/{print $NF}'
+      //dockerImage = docker images | awk '/Successfully built/{print $NF}'
       //IMAGE_ID=$(docker build -q -t foo . 2>/dev/null | awk '/Successfully built/{print $NF}')
    }
    
    stage('Docker image deploy'){
-      sh 'docker run {$dockerImage}'
+      sh 'docker run 36ee344df54f'
    }
 }
