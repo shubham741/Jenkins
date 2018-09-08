@@ -25,6 +25,6 @@ node {
    }
    
    stage('Docker image build'){
-      sh 'docker build -f DockerFile -t shsingh/demo .'
+      sh 'docker build -f /DockerFile -t shsingh/demo .'
    }
 }
