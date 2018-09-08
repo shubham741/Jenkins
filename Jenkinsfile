@@ -23,5 +23,7 @@ node {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
-   
+   stage('Docker image build') {
+      docker build -f DockerFile -t demo .
+   }
 }
