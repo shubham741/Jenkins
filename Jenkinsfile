@@ -3,12 +3,8 @@ node {
    def app
    def docker
    def dockerImage
-   stage('Preparation') { // for display purposes
-      // Get some code from a GitHub repository
-      git 'https://github.com/shubham741/Jenkins.git'
-      // Get the Maven tool.
-      // ** NOTE: This 'M3' Maven tool must be configured
-      // **       in the global configuration.           
+   stage('Preparation') { 
+      git 'https://github.com/shubham741/Jenkins.git'    
       mvnHome = tool 'maven_3_5_4'
       docker = tool 'docker'
    }
@@ -31,7 +27,7 @@ node {
       //IMAGE_ID=$(docker build -q -t foo . 2>/dev/null | awk '/Successfully built/{print $NF}')
    }
    
-   /*stage('Docker image deploy'){
+   stage('Docker image deploy'){
       sh 'docker run -p 8090:8090 36ee344df54f'
-   }*/
+   }
 }
