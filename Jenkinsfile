@@ -27,7 +27,7 @@ node {
       //IMAGE_ID=$(docker build -q -t foo . 2>/dev/null | awk '/Successfully built/{print $NF}')
    }
    
-   /*stage('Docker image deploy'){
+   stage('Docker image deploy'){
       sh 'docker run -p 8090:8090 36ee344df54f'
-   }*/
+   }
 }
